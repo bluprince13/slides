@@ -5,9 +5,8 @@
             style="
             height: 180px;
             margin: 0 auto 4rem auto;
-            background: transparent;
-        "
-    />
+            background: transparent;"
+        />
 </a>
 
 ### Template
@@ -17,3 +16,5 @@
 ---
 
 ## First slide
+
+Remember to change title and description in index.html
