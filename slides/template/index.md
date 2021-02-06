@@ -15,6 +15,6 @@
 
 ---
 
-## First slide
+## Let's learn about
 
 Remember to change title and description in index.html
