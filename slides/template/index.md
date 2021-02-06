@@ -17,4 +17,4 @@
 
 ## Let's learn about
 
-Remember to change title and description in index.html
+Remember to change title. description and base href in index.html
