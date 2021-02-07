@@ -7,7 +7,7 @@
 
         <meta name="description" content="description" />
         <meta name="author" content="Vipin Ajayakumar" />
-        <base href="/slides/template/">
+        <base href="/slides/template/" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
         <link
             rel="stylesheet"
-            href="../reveal.js/dist/theme/white.css"
+            href="../reveal.js/dist/theme/black.css"
             id="theme"
         />
 
@@ -30,6 +30,10 @@
             rel="stylesheet"
             href="../reveal.js/plugin/highlight/monokai.css"
             id="highlight-theme"
+        />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
         />
     </head>
 
@@ -51,6 +55,8 @@
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="../plugins/reveal.js-menu/menu.js"></script>
+        <script src="../plugins/reveal.js-plugins/chalkboard/plugin.js"></script>
         <script>
             // Also available as an ES module, see:
             // https://revealjs.com/initialization/
@@ -59,14 +65,15 @@
                 progress: true,
                 center: true,
                 hash: true,
-
                 // Learn about plugins: https://revealjs.com/plugins/
                 plugins: [
                     RevealZoom,
                     RevealNotes,
                     RevealSearch,
                     RevealMarkdown,
-                    RevealHighlight
+                    RevealHighlight,
+                    RevealMenu,
+                    RevealChalkboard
                 ]
             })
         </script>
