@@ -7,7 +7,7 @@
 
         <meta name="description" content="JS - behind the scenes" />
         <meta name="author" content="Vipin Ajayakumar" />
-        <base href="/slides/js-behind-the-scenes/">
+        <base href="/slides/js-behind-the-scenes/" />
 
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta
@@ -21,10 +21,10 @@
         <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
         <link
             rel="stylesheet"
-            href="../reveal.js/dist/theme/white.css"
+            href="../reveal.js/dist/theme/black.css"
             id="theme"
         />
-
+        <link href="../css/mystyle.css" rel="stylesheet" />
         <!-- Theme used for syntax highlighting of code -->
         <link
             rel="stylesheet"
@@ -51,6 +51,8 @@
         <script src="../reveal.js/plugin/search/search.js"></script>
         <script src="../reveal.js/plugin/markdown/markdown.js"></script>
         <script src="../reveal.js/plugin/highlight/highlight.js"></script>
+        <script src="../plugins/reveal.js-menu/menu.js"></script>
+        <script src="../plugins/reveal.js-plugins/chalkboard/plugin.js"></script>
         <script>
             // Also available as an ES module, see:
             // https://revealjs.com/initialization/
@@ -66,7 +68,9 @@
                     RevealNotes,
                     RevealSearch,
                     RevealMarkdown,
-                    RevealHighlight
+                    RevealHighlight,
+                    RevealMenu,
+                    RevealChalkboard
                 ]
             })
         </script>

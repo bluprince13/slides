@@ -5,7 +5,7 @@
             style="
             height: 180px;
             margin: 0 auto 4rem auto;
-            background: transparent;"
+              background: transparent;"
         />
 </a>
 
@@ -17,37 +17,76 @@
 
 ## Let's learn about
 
-- Higher-order functions and callbacks
-- Closure (Xmas comes early)
-- Asynchronous JavaScript
-- Object Oriented JavaScript
-
-Heavily inspired by [Will Sentance](https://twitter.com/willsentance)'s course:
-[JavaScript: The Hard Parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/)
+- Basics facts of life 🏠
+- Higher-order functions 🦸‍♀️
+- Closure 🎄
+- Asynchronous JavaScript 🤹
+- Promise 🤝
+- Async await 🚦
 
 ---
 
-## Basic facts of life
+## Heavily inspired by
 
-- **Thread of execution** - JS executes code line by line.
-- **Functions** are code that we can call/invoke/execute using name and ().
-  - **Parameters** can be defined that provide actual values called
-    **arguments**
-- **JavaScript engine** is a program that executes JS code. e.g.
-  [V8](https://v8.dev/)
-  - **Memory heap** is where data is saved.
-  - **Call stack** keeps track of function invocations
-    - **Execution context** is created to run a function with its own **local
-      memory**
+- [JavaScript: The Hard Parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/)
+- [JavaScript: The Advanced Concepts](https://www.udemy.com/course/advanced-javascript-concepts)
+
+---
+
+## Basic facts of life 🏠
 
 --
 
-![](images/call_stack.png) Reference:
+Single thread of execution
+
+Note:
+
+- Line by line execution
+
+--
+
+![](images/function.png)
+
+[Frontamentals - JavaScript Functions](https://www.frontamentals.com/functions/)
+
+<!-- .element: class="caption" -->
+
+--
+
+## JS engine
+
+- JavaScript engine is a program that executes JS code.
+- e.g. [V8](https://v8.dev/) by Google
+
+![](images/js-engine.png) <!-- .element: width="40%" -->
+
+[JavaScript Call Stack, Event Loop and Callbacks](https://prashantb.me/javascript-call-stack-event-loop-and-callbacks/)
+
+<!-- .element: class="caption" -->
+
+--
+
+![](images/call_stack.png)
+
+Reference:
 [In-Depth Introduction to Call Stack in JavaScript](https://medium.com/swlh/in-depth-introduction-to-call-stack-in-javascript-a07b8513bcc3)
 
+<!-- .element: class="caption" -->
+
 --
 
-## Execution context
+```js []
+const num = 10
+
+const multiplyBy2 = (x) => {
+ const result = x * 2
+ return result
+}
+
+const output = multiplyBy2(num)
+```
+
+--
 
 ```js []
 const num = 10
@@ -64,13 +103,12 @@ const output = multiplyBy2(num)
 
 ---
 
-## Higher-order functions and callbacks
+## Higher-order functions 🦸‍♀️
 
-- Functions that can
-  - take **callback functions** as arguments or
-  - return a function as output.
-- Functions are **first-class citizens** in JS, meaning they are treated like
-  any other JS object.
+- Take callback functions as arguments or
+- Return a function as output.
+
+--
 
 ```js []
 let numbers = [1, 4, 9]
@@ -82,17 +120,37 @@ let roots = numbers.map((num) => Math.sqrt(num))
 
 --
 
-![](images/goku.png)
+## Functions are first-class citizens in JS
 
----
+Note:
 
-## Closure (or backpack)
-
-<img src="images/backpack.jpg" width="50%"/>
+- Treated just like any other object.
+- Therefore, it's possible to pass them in as parameters or return them from a
+  function as well.
 
 --
 
-## Example
+![](images/goku.png)
+
+Note:
+
+- Functions were already cool even before they could take parameters
+- I remember learning to call them `procedures`
+- They help with DRY.
+- Parameters lets us take DRY one step further.
+- With HOF, functions are now extremely powerful!
+
+---
+
+## Closure 🎄
+
+<img src="images/backpack.jpg" width="50%"/>
+
+Note:
+
+- Notice the backpack that the function is carrying.
+
+--
 
 ```js []
 const outer = () => {
@@ -161,6 +219,20 @@ myNewFunction()
 
 <img src="images/closure-3.png"/>
 
+Note:
+
+- Show closure in browser
+
+--
+
+> A closure is the combination of a function bundled together (enclosed) with
+> references to its surrounding state (the lexical environment). In other words,
+> a closure gives you access to an outer function’s scope from an inner
+> function. In JavaScript, closures are created every time a function is
+> created, at function creation time.
+
+[Mozilla definition for closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+
 --
 
 ```js [11-12]
@@ -180,13 +252,7 @@ myNewestFunction() // counter = ?
 
 --
 
-> A closure is the combination of a function bundled together (enclosed) with
-> references to its surrounding state (the lexical environment). In other words,
-> a closure gives you access to an outer function’s scope from an inner
-> function. In JavaScript, closures are created every time a function is
-> created, at function creation time.
-
-[Mozilla definition for closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
+> With great power comes great responsibility - Uncle Ben
 
 --
 
@@ -195,13 +261,149 @@ myNewestFunction() // counter = ?
 - [once](https://underscorejs.org/#once),
   [memoize](https://underscorejs.org/#memoize)
 - [Iterators and generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators)
-- Asynchronous JavaScript (promises)
+- Data hiding and encapsulation - used in
+  [JavaScript Module Pattern](https://coryrylan.com/blog/javascript-module-pattern-basics)
+- Asynchronous JavaScript - callbacks and promises rely on closure to persist
+  state
 
-<!-- TBC -->
+Note:
+
+- once - ensure a function once runs once, e.g., an initialisation
+- memoize - improve performance by caching results for previous invocations
+- Iterators provide `next` method so that you can retrieve things from a
+  collection
+- Generators use the `yield` keyword to pause execution.
 
 ---
-## Asynchronous JavaScript
+
+## Asynchronous JavaScript 🤹
+
+![](images/multi-tasking.webp)
+
+Note:
+
+- Asynchronous: 1 person multi-tasking even though they can only do 1 thing a
+  time (like an oncall)
+- Parallel: Multiple people doing things at the same time (like devs in a
+  sprint)
+- How can a single threaded JS engine multi-task? All it has is a call stack and
+  memory heap.
+- e.g. it comes across a Twitter API call. It has to wait there, right? If it
+  goes past immediately after making the call, there's no way for it to come
+  back and get the results.
+- Hmmmm
+
+--
+
+## Blocking code can ruin the UX
+
+Note:
+
+- Browser uses a single thread to run all the JavaScript in your page as well as
+  to perform layout, reflows, and garbage collection. This means that
+  long-running JavaScript functions can block the thread, leading to an
+  unresponsive page and a bad user experience.
+- Well, it turns out that JS is not alone.
+- It's just one musician that's part of a bigger orchestra.
+
+--
+
+![](images/js-runtime.png)
+
+[The Javascript Runtime Environment](https://olinations.medium.com/the-javascript-runtime-environment-d58fa2e60dd0)
+
+<!-- .element: class="caption" -->
+
+Note:
+
+- The Web APIs can be seen on the `window` object in the console.
+- The Event Loop has the least glamourous job — to monitor the Call Stack and
+  the Callback Queue. If the Call Stack is empty, it will take the first event
+  from the queue and will push it to the Call Stack, which effectively runs it.
+
+--
+
+  <!-- .slide: data-background-color="white" data-background-iframe=" http://latentflip.com/loupe" data-background-interactive -->
+
+Note:
+
+- If we change the timer to 0s, would the execution order be different?
+
+--
+
+## What if we want to track the background task in JS land?
+
+---
+
+## Promise 🤝
+
+Introduced in ES6 2015
+
+![](images/promise.jpg)
+
+--
+
+```js []
+fetch('https://example.com/movies.json')
+ .then((response) => response.json())
+ .then((data) => console.log(data))
+```
+
+--
+
+```js []
+const myPromise = new Promise(function (resolve, reject) {})
+myPromise.then(onFulfilledFunc).catch(onRejectedFunc)
+
+// {
+//   [[PromiseState]]: "pending",
+//   [[PromiseResult]]: undefined
+// }
+```
+
+![](images/promise-states.png)
+
+--
+
+## Benefits
+
+- More readable
+- Easy to chain; avoid callback pyramid of doom
+- Better error handling
+- Promise.all
 
 --
 
 --
+
+onCompletion/onRejection tasks go to the Microtask queue (or Job queue) which
+the event loop prioritises over callback queue
+
+---
+
+## Async await 🚦
+
+Introduced in ES8 2017
+
+```js []
+function hello() {
+ return 'Hello'
+}
+hello()
+```
+
+--
+
+```js []
+async function hello() {
+ return (greeting = await Promise.resolve('Hello'))
+}
+
+hello().then(alert)
+```
+
+--
+
+## Just synctatic sugar
+
+Async function returns a promise
