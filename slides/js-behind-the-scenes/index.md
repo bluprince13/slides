@@ -269,10 +269,17 @@ myNewestFunction() // counter = ?
 Note:
 
 - once - ensure a function once runs once, e.g., an initialisation
-- memoize - improve performance by caching results for previous invocations
+- memoize - memo: short note on something to be remembered and is linked to
+  memory; a memoize function improves performance by caching results for
+  previous invocations,
 - Iterators provide `next` method so that you can retrieve things from a
-  collection
+  collection. [Example](https://masteringjs.io/tutorials/fundamentals/iterator).
 - Generators use the `yield` keyword to pause execution.
+  [Example](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator).
+
+--
+
+  <!-- .slide: data-background-color="white" data-background-iframe=" https://quiz.typeofnan.dev/lexical-scope/" data-background-interactive -->
 
 ---
 
@@ -363,6 +370,14 @@ myPromise.then(onFulfilledFunc).catch(onRejectedFunc)
 
 ![](images/promise-states.png)
 
+Note:
+
+- The double brackets indicate that these are properties used internally by JS
+  engine. You can't access the state or result directly, only via Promise
+  methods.
+- `catch` lets you do error handling.
+- You can chain lots of `then` and `catch` statements.
+
 --
 
 ## Benefits
@@ -373,6 +388,45 @@ myPromise.then(onFulfilledFunc).catch(onRejectedFunc)
 - Promise.all
 
 --
+
+```js []
+setTimeout(() => console.log('Hello'), 0)
+
+fetch('https://example.com/movies.json') //
+ .then((data) => console.log(data))
+
+blockfor300ms()
+
+console.log('Bye')
+```
+
+Note:
+
+- How could we block for 300ms?
+
+```js []
+var i = 0
+while (i < 1000000000) {
+ i++
+}
+```
+
+--
+
+```js []
+setTimeout(() => console.log('Hello'), 0)
+
+fetch('https://example.com/movies.json') //
+ .then((data) => console.log(data))
+
+blockfor300ms()
+
+console.log('Bye')
+
+// Bye
+// movies
+// Hello
+```
 
 --
 
@@ -385,6 +439,8 @@ the event loop prioritises over callback queue
 
 Introduced in ES8 2017
 
+--
+
 ```js []
 function hello() {
  return 'Hello'
@@ -396,14 +452,73 @@ hello()
 
 ```js []
 async function hello() {
- return (greeting = await Promise.resolve('Hello'))
+ return 'Hello'
 }
+hello()
 
 hello().then(alert)
 ```
 
 --
 
-## Just synctatic sugar
+## Async function returns a promise
 
-Async function returns a promise
+--
+
+```js []
+async function hello() {
+ const greeting = await Promise.resolve('Hello')
+ return greeting
+}
+
+hello().then(alert)
+```
+
+Note:
+
+- When you Promise.resolve on a string. It converts it into a promise first and
+  then resolves it with the string as the return value.
+
+--
+
+## Await pauses your code until Promise is fulfilled and then returns the resulting value
+
+Note:
+
+- How does it pause? Remember that generators can pause execution?
+- Closure
+
+--
+
+## Benefits of async/await
+
+- Syncactic sugar
+- Makes it look like synchronous code?
+- Easier to read?
+- Can await Promise.all
+
+Note:
+
+- Even though it looks like synchronous code, remember that the whole async
+  funtion is non-blocking
+- Beginners might not understand how async await code truly works.
+- Another downside: Can only use await within async function.
+
+--
+
+  <!-- .slide: data-background-color="white" data-background-iframe=" https://quiz.typeofnan.dev/async-await/" data-background-interactive -->
+
+--
+
+Further reading: [Making asynchronous programming easier with async and await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
+
+---
+
+## Conclusion
+
+- Basics facts of life 🏠
+- Higher-order functions 🦸‍♀️
+- Closure 🎄
+- Asynchronous JavaScript 🤹
+- Promise 🤝
+- Async await 🚦
