@@ -19,7 +19,7 @@
 
 - Basics facts of life 🏠
 - Higher-order functions 🦸‍♀️
-- Closure 🎄
+- Closure 🎒
 - Asynchronous JavaScript 🤹
 - Promise 🤝
 - Async await 🚦
@@ -28,8 +28,13 @@
 
 ## Heavily inspired by
 
-- [JavaScript: The Hard Parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/)
-- [JavaScript: The Advanced Concepts](https://www.udemy.com/course/advanced-javascript-concepts)
+- [Will Sentance](https://twitter.com/willsentance) -
+  [Frontend Masters](https://frontendmasters.com/)
+  - [JavaScript: The Hard Parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/)
+  - [JavaScript: The New Hard Parts](https://frontendmasters.com/courses/javascript-new-hard-parts)
+- [Andrei Neagoie](https://twitter.com/andreineagoie) -
+  [Zero To Mastery](https://zerotomastery.io/)
+  - [JavaScript: The Advanced Concepts](https://www.udemy.com/course/advanced-javascript-concepts)
 
 ---
 
@@ -85,6 +90,10 @@ const multiplyBy2 = (x) => {
 
 const output = multiplyBy2(num)
 ```
+
+Note:
+
+- Everytime a function is invoked, a new Execution Context is created.
 
 --
 
@@ -142,7 +151,7 @@ Note:
 
 ---
 
-## Closure 🎄
+## Closure 🎒
 
 <img src="images/backpack.jpg" width="50%"/>
 
@@ -199,10 +208,10 @@ myNewFunction()
 
 --
 
-- When a function is created, it maintains a link to its lexical environment
 - Scoping: How a parser resolves variable names when functions are nested
   - Lexical scoping: Based on where function is defined
   - Dynamic scoping: Based on where function is executed
+- When a function is created, it maintains a link to its lexical environment
 
 --
 
@@ -233,6 +242,9 @@ Note:
 
 [Mozilla definition for closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 
+Note: Confusingly, both the concept and the actual backpack are referred to as
+closures.
+
 --
 
 ```js [11-12]
@@ -249,6 +261,10 @@ myNewFunction() // counter = 2
 const myNewestFunction = outer()
 myNewestFunction() // counter = ?
 ```
+
+Note:
+
+- What do you think the value of counter would be?
 
 --
 
@@ -271,10 +287,11 @@ Note:
 - once - ensure a function once runs once, e.g., an initialisation
 - memoize - memo: short note on something to be remembered and is linked to
   memory; a memoize function improves performance by caching results for
-  previous invocations,
+  previous invocations
 - Iterators provide `next` method so that you can retrieve things from a
   collection. [Example](https://masteringjs.io/tutorials/fundamentals/iterator).
-- Generators use the `yield` keyword to pause execution.
+- Generators use the `yield` keyword to pause execution / suspend an execution
+  context.
   [Example](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator).
 
 --
@@ -356,10 +373,26 @@ fetch('https://example.com/movies.json')
  .then((data) => console.log(data))
 ```
 
+Note:
+
+- Promises let us write something like this.
+- This function does two things:
+  - Initiate background web browser work
+  - Return a placeholder object in JS land
+  - That placeholder object is called a promise
+
 --
 
 ```js []
-const myPromise = new Promise(function (resolve, reject) {})
+const myPromise = new Promise((resolve, reject) => {
+    let condition;
+
+    if(condition is met) {
+        resolve('Promise is resolved successfully.');
+    } else {
+        reject('Promise is rejected');
+    }
+});
 myPromise.then(onFulfilledFunc).catch(onRejectedFunc)
 
 // {
@@ -372,10 +405,18 @@ myPromise.then(onFulfilledFunc).catch(onRejectedFunc)
 
 Note:
 
-- The double brackets indicate that these are properties used internally by JS
-  engine. You can't access the state or result directly, only via Promise
-  methods.
+- You can also instantiate a promise using the new keyword
+- Have a look at the promise object
+
+  - The double brackets indicate that these are properties used internally by JS
+    engine. You can't access the state or result directly, only via Promise
+    methods.
+  - When we use the resolve/reject, the Promise object is updated.
+
+- `then` lets you do something when the Promise is resolved - just like a
+  callback.
 - `catch` lets you do error handling.
+- The `onFulfilled` and `onRejected` functions get the `PromiseResult` as input.
 - You can chain lots of `then` and `catch` statements.
 
 --
@@ -387,6 +428,11 @@ Note:
 - Better error handling
 - Promise.all
 
+Note:
+
+- On the downside, a lot of beginners probably don't understand these well and
+  might find them hard to debug.
+
 --
 
 ```js []
@@ -395,14 +441,17 @@ setTimeout(() => console.log('Hello'), 0)
 fetch('https://example.com/movies.json') //
  .then((data) => console.log(data))
 
-blockfor300ms()
+blockforALongTime()
 
 console.log('Bye')
 ```
 
 Note:
 
+- Given that this function is going over to the callback queue, how does it
+  remeber the data? Closure!
 - How could we block for 300ms?
+- What order do you think the console messages be printed?
 
 ```js []
 var i = 0
@@ -419,7 +468,7 @@ setTimeout(() => console.log('Hello'), 0)
 fetch('https://example.com/movies.json') //
  .then((data) => console.log(data))
 
-blockfor300ms()
+blockforALongTime()
 
 console.log('Bye')
 
@@ -430,8 +479,8 @@ console.log('Bye')
 
 --
 
-onCompletion/onRejection tasks go to the Microtask queue (or Job queue) which
-the event loop prioritises over callback queue
+onCompletion/onRejection functions go to the Microtask queue (or Job queue)
+which the event loop prioritises over the Task queue (or Callback queue)
 
 ---
 
@@ -502,6 +551,7 @@ Note:
 - Even though it looks like synchronous code, remember that the whole async
   funtion is non-blocking
 - Beginners might not understand how async await code truly works.
+- Error handling using try/catch is arguably not as neat as with promises.
 - Another downside: Can only use await within async function.
 
 --
@@ -510,7 +560,8 @@ Note:
 
 --
 
-Further reading: [Making asynchronous programming easier with async and await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
+Further reading:
+[Making asynchronous programming easier with async and await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)
 
 ---
 
@@ -518,7 +569,7 @@ Further reading: [Making asynchronous programming easier with async and await](h
 
 - Basics facts of life 🏠
 - Higher-order functions 🦸‍♀️
-- Closure 🎄
+- Closure 🎒
 - Asynchronous JavaScript 🤹
 - Promise 🤝
 - Async await 🚦
