@@ -503,9 +503,9 @@ hello()
 async function hello() {
  return 'Hello'
 }
-hello()
+hello() // The result is now a promise!
 
-hello().then(alert)
+hello().then(alert) // And we can use promise methods on it.
 ```
 
 --
@@ -515,18 +515,18 @@ hello().then(alert)
 --
 
 ```js []
-async function hello() {
- const greeting = await Promise.resolve('Hello')
- return greeting
+async function fetchMovies() {
+ const response = await fetch('/movies')
+ // waits until the request completes...
+ console.log(response)
 }
-
-hello().then(alert)
 ```
 
 Note:
 
-- When you Promise.resolve on a string. It converts it into a promise first and
-  then resolves it with the string as the return value.
+- The async keywod isn't all that useful in itself.
+- The await keyword lets you pause a function until whatever's on its right is
+  resolved.
 
 --
 
@@ -536,6 +536,22 @@ Note:
 
 - How does it pause? Remember that generators can pause execution?
 - Closure
+
+--
+
+```js []
+async function fetchMovies() {
+ try {
+  let response = await fetch('/thisWillFailHahaha')
+  console.log(await response.json())
+ } catch (err) {
+  // catches errors both in fetch and response.json
+  alert(err)
+ }
+}
+
+fetchMovies()
+```
 
 --
 
