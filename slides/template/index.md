@@ -11,7 +11,7 @@
 
 ### Template
 
-[@vipinajayakumar](https://twitter.com/vipinajayakumar)
+[bluprince13.com/slides/template](https://bluprince13.com/slides/template)
 
 ---
 
