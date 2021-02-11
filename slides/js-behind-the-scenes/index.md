@@ -356,12 +356,15 @@ Note:
 
 --
 
+[Loupe](http://latentflip.com/loupe)
+
+A little visualisation to help you understand how JavaScript's call stack/event
+loop/callback queue interact with each other.
+
 Note:
 
 - Remember to adjust the delay.
 - If we change the timer to 0s, would the execution order be different?
-
-  <!-- .slide: data-background-color="white" data-background-iframe=" http://latentflip.com/loupe" data-background-interactive -->
 
 --
 
