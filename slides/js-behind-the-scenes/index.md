@@ -11,7 +11,7 @@
 
 ### JS - Behind the scenes
 
-[@vipinajayakumar](https://twitter.com/vipinajayakumar)
+[bluprince13.com/slides/js-behind-the-scenes](https://bluprince13.com/slides/js-behind-the-scenes)
 
 ---
 
@@ -68,6 +68,10 @@ Note:
 [JavaScript Call Stack, Event Loop and Callbacks](https://prashantb.me/javascript-call-stack-event-loop-and-callbacks/)
 
 <!-- .element: class="caption" -->
+
+Note:
+
+- V8 is what's used in Chrome and Node
 
 --
 
@@ -126,6 +130,11 @@ let roots = numbers.map((num) => Math.sqrt(num))
 // roots is now     [1, 2, 3]
 // numbers is still [1, 4, 9]
 ```
+
+Note:
+
+- Appreciate that we're creating a brand new function here, even though it's
+  anonymous
 
 --
 
@@ -347,11 +356,12 @@ Note:
 
 --
 
-  <!-- .slide: data-background-color="white" data-background-iframe=" http://latentflip.com/loupe" data-background-interactive -->
-
 Note:
 
+- Remember to adjust the delay.
 - If we change the timer to 0s, would the execution order be different?
+
+  <!-- .slide: data-background-color="white" data-background-iframe=" http://latentflip.com/loupe" data-background-interactive -->
 
 --
 
@@ -379,6 +389,7 @@ Note:
 - This function does two things:
   - Initiate background web browser work
   - Return a placeholder object in JS land
+  - Dot notation indicates we are usig its method
   - That placeholder object is called a promise
 
 --
@@ -417,6 +428,8 @@ Note:
   callback.
 - `catch` lets you do error handling.
 - The `onFulfilled` and `onRejected` functions get the `PromiseResult` as input.
+- They go into browser land and are pushed into the callback queue when the
+  promise resolves or rejects.
 - You can chain lots of `then` and `catch` statements.
 
 --
@@ -448,8 +461,8 @@ console.log('Bye')
 
 Note:
 
-- Given that this function is going over to the callback queue, how does it
-  remeber the data? Closure!
+- Given that this function is going over to the callback queue in browser land,
+  how does it remember the data? Closure!
 - How could we block for 300ms?
 - What order do you think the console messages be printed?
 
@@ -477,10 +490,14 @@ console.log('Bye')
 // Hello
 ```
 
+Note:
+
+- Why does hello come after movies?
+
 --
 
-onCompletion/onRejection functions go to the Microtask queue (or Job queue)
-which the event loop prioritises over the Task queue (or Callback queue)
+Promise callbacks go to the Microtask queue (or Job queue) which the event loop
+prioritises over the Task queue (or Callback queue)
 
 ---
 
@@ -527,10 +544,11 @@ Note:
 - The async keywod isn't all that useful in itself.
 - The await keyword lets you pause a function until whatever's on its right is
   resolved.
+- It's invoking the `then` method on the promise.
 
 --
 
-## Await pauses your code until Promise is fulfilled and then returns the resulting value
+## Await pauses your code until Promise is fulfilled and then returns the PromiseResult
 
 Note:
 
@@ -538,6 +556,8 @@ Note:
 - Closure
 
 --
+
+## Error handling
 
 ```js []
 async function fetchMovies() {
@@ -557,7 +577,7 @@ fetchMovies()
 
 ## Benefits of async/await
 
-- Syncactic sugar
+- Syntactic sugar
 - Makes it look like synchronous code?
 - Easier to read?
 - Can await Promise.all
