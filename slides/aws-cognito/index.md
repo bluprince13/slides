@@ -17,15 +17,21 @@
 
 ## Let's learn about
 
-- How to authenticate a user in a Cognito user pool
-- Authorising users to API Gateway resource based on user pool membership
-- Authorising users to API Gateway resource based on user group membership
+--
 
-I will cover the CDK/backand AND frontend.
+- Logging in an user
+- Authorising access to API for all users
+- Authorising access to API for a group of users
+- Other more advanced workflows
+- Extras: OAuth, Json Web Tokens etc.
+
+--
+
+CDK/backend AND frontend
 
 ---
 
-## User pool
+## Logging in an user
 
 --
 
@@ -38,20 +44,22 @@ CDK
 --
 
 ```js
-    const userPool = new cognito.UserPool(this, "demo-userpool", {
-        userPoolName: "demo-userpool",
-        selfSignUpEnabled: true,
-        signInAliases: {
-            email: true,
-        },
-        mfa: cognito.Mfa.REQUIRED,
-        mfaSecondFactor: {
-            sms: false,
-            otp: true,
-        },
-    });
+const cognito = require("aws-cdk-lib/aws-cognito");
 
-    const userPoolClient = userPool.addClient("demo-client");
+const userPool = new cognito.UserPool(this, "demo-userpool", {
+    userPoolName: "demo-userpool",
+    selfSignUpEnabled: true,
+    signInAliases: {
+        email: true,
+    },
+    mfa: cognito.Mfa.REQUIRED,
+    mfaSecondFactor: {
+        sms: false,
+        otp: true,
+    },
+});
+
+const userPoolClient = userPool.addClient("demo-client");
 ```
 
 --
@@ -71,11 +79,12 @@ import awsconfig from "../src/aws-exports";
 
 Amplify.configure(awsconfig);
 
-import { useState, useEffect } from "react";
-import React from "react";
-
 function Home() {
-  ...
+  return (
+    <div>
+        Hello world!
+    </div>
+  )
 }
 
 export default withAuthenticator(Home);
@@ -122,6 +131,19 @@ export default awsmobile;
 
 --
 
+```js
+import { Auth } from "aws-amplify";
+
+export async function getUser() {
+    const user = await Auth.currentAuthenticatedUser();
+    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+    const email = user.attributes.email;
+    return { groups, email };
+}
+```
+
+--
+
 Json Web Token
 
 --
@@ -140,9 +162,17 @@ JWT vs Session id
 
 <!-- .element: class="caption" -->
 
+--
+
+![](assets/oauth_flow_diagram.png) <!-- .element: width="80%" -->
+
+[Using OAuth 2.0 - Slack](https://api.slack.com/legacy/oauth)
+
+<!-- .element: class="caption" -->
+
 ---
 
-## Authorising users to API Gateway resource based on user pool membership
+## Authorising access to API for all users
 
 --
 
@@ -198,7 +228,7 @@ export async function getData(path) {
 
 ---
 
-## Authorising users to API Gateway resource based on user group membership
+## Authorising access to API for a group of users
 
 --
 
@@ -283,8 +313,12 @@ UI
 --
 
 ```js
+import { Auth } from "aws-amplify";
+import { fromCognitoIdentityPool } from "@aws-sdk/credential-providers";
+import axios from "axios";
+import aws4Interceptor from "./aws4interceptor";
+
 async function getCredentialsForIdentityPool() {
-    // https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-integrating-user-pools-with-identity-pools.html
     const credentialsProvider = fromCognitoIdentityPool({
         identityPoolId,
         logins: {
@@ -297,7 +331,6 @@ async function getCredentialsForIdentityPool() {
         clientConfig: { region },
     });
     const credentials = await credentialsProvider();
-    console.log(credentials);
     const interceptor = aws4Interceptor(
         {
             region,
@@ -331,7 +364,7 @@ const signedRequest = Signer.sign(request, accessInfo, serviceInfo);
 ...
 ```
 
---
+---
 
 Adding users to a group automatically on sign up
 
@@ -404,10 +437,6 @@ exports.addUserToReaderGroup = async function (event, context) {
 
 <!-- .element: class="caption" -->
 
---
-
-[How do I authorize access to API Gateway APIs using custom scopes in Amazon Cognito?](https://aws.amazon.com/premiumsupport/knowledge-center/cognito-custom-scopes-api-gateway/#)
-
 ---
 
 ## Add claims dynamically
@@ -434,9 +463,21 @@ trigger](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lam
 
 ---
 
+## Code repos
+
+- https://github.com/bluprince13/cognito-demo-ui
+- https://github.com/bluprince13/cognito-demo-cdk
+
+---
+
+## Questions?
+
+---
+
 ## References
 
 - [Introduction to Amazon Cognito at acloud.guru](https://learn.acloud.guru/course/introduction-to-amazon-cognito/learn/4efa7600-73bd-409e-8dc9-45b4486e27e7/a8df8e1b-93e7-4d20-8cf9-783377d12a79/watch)
 - [Evaluating access control methods to secure Amazon API Gateway APIs
 ](https://aws.amazon.com/blogs/compute/evaluating-access-control-methods-to-secure-amazon-api-gateway-apis/)
 - [Fine-grained Access Control with Amazon Cognito Identity Pools - YouTube](https://www.youtube.com/watch?v=tAUmz94O2Qo)
+- [How do I authorize access to API Gateway APIs using custom scopes in Amazon Cognito?](https://aws.amazon.com/premiumsupport/knowledge-center/cognito-custom-scopes-api-gateway/#)
