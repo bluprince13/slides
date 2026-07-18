@@ -17,7 +17,7 @@
 
 ## Motivation
 
-My partner wanted me to give her an introuction to the stock market that was
+My partner wanted me to give her an introduction to the stock market that was
 simple, immediately useful and most of all, not boring.
 
 ---
@@ -29,21 +29,40 @@ simple, immediately useful and most of all, not boring.
   - Inflation
   - Compounding
 - Assets: Stocks vs. funds
+- Tax
+  - Marginal tax rate
+  - Tax on dividends
+  - Capital Gains Tax (CGT)
 - Accounts: Pensions vs. ISA vs. GIA
 - Platforms
 - How to learn more
 
 --
 
-## Out of scope but important
+## Out of scope but important - 1
 
 - Debt
-- Mortgages
-- Credit score
-- Budgeting
-- Insurance
-- Wills
-- Bonds
+  - Mortgages
+  - Credit score
+- Saving
+  - Budgeting
+- Planning
+  - Insurance
+  - Wills
+  - Inheritance
+  - State Pension
+
+--
+
+## Out of scope but important - 2
+
+- Investing
+  - Bonds
+  - LISA
+- International
+  - Exchange rate
+  - Tax residency
+  - Moving/retiring abroad
 
 --
 
@@ -267,6 +286,55 @@ The fluctuations don't matter as much if you are investing for a long time.
 
 ---
 
+## Tax
+
+--
+
+![](assets/death-and-taxes.jpg) <!-- .element: width="85%" -->
+
+--
+
+![](assets/marginal-tax-rate.png) <!-- .element: width="100%" -->
+
+[Interactive marginal tax rate chart – June 2024](https://taxpolicy.org.uk/2024/03/10/infographic_marginal_rates_2024/)
+
+Components: [Income tax](https://www.gov.uk/income-tax-rates), [National Insurance](https://www.gov.uk/national-insurance/how-much-you-pay)
+
+--
+
+## Income tax rate bands
+
+- Personal Allowance - Up to £12,570
+- Basic rate 20% - £12,571 to £50,270
+- Higher rate 40% - £50,271 to £125,140
+
+--
+
+## Tax on dividends
+
+- Tax-free allowance: Above £500
+- Basic rate band: 8.75%
+- Higher rate band: 33.75%
+- See [[Tax on dividends - gov.uk](https://www.gov.uk/tax-on-dividends)]
+
+--
+
+## Capital Gains Tax (CGT)
+
+- Tax-free allowance: £3000
+- 10% on gains within basic rate band
+- 20% on gains above basic rate band
+- See [[Capital Gains Tax allowances - gov.uk](https://www.gov.uk/capital-gains-tax)]
+
+--
+
+## How can we minimise the tax we owe?
+
+- Government incentivises us to to save by offering tax benefits
+- We just need to make use of these `tax wrappers`
+
+---
+
 ## Types of accounts
 
 --
@@ -275,7 +343,11 @@ The fluctuations don't matter as much if you are investing for a long time.
 
 --
 
-## Defined Contribution Pension - most common type
+## Defined Contribution Pension
+
+- aka Private pension
+- Most common type
+- [Can only withdraw from after 55 usually](https://www.gov.uk/early-retirement-pension/personal-and-workplace-pensions)
 
 --
 
@@ -310,6 +382,14 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 
 --
 
+- No CGT
+- No tax on dividends
+- Income tax only paid at time of withdrawal
+  - [25% tax free allowance](https://www.gov.uk/tax-on-pension/tax-free)
+  - Rest is hopefully paid at lower income tax rates than marginal tax rate when you were earning
+
+--
+
 ## Pension annual allowance
 
 £60,000
@@ -329,6 +409,11 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 --
 
 ## Individual Savings Account [ISA]
+
+--
+
+- No CGT
+- No tax on dividends
 
 --
 
@@ -364,13 +449,6 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 
 Taxed!
 
-- Dividends
-  - Above £1000
-  - [[Tax on dividends - gov.uk](https://www.gov.uk/tax-on-dividends)]
-- Gains
-  - Above £6000
-  - [[Capital Gains Tax allowances - gov.uk](https://www.gov.uk/capital-gains-tax/allowances)]
-
 ---
 
 ## Platforms / brokers
@@ -398,11 +476,11 @@ As easy as opening a bank account. Don't feel intimidated.
 ## Where to start?
 
 1. Check/update your pension contribution percentage
-2. Check/update what fund your pension is getting invested into
+2. Check/update what fund your pension is getting invested into. The default is usually too conservative.
 3. Make sure you have an emergency fund (at least 3 months salary) in an easy
    access bank account
 4. Open an ISA with a platform/broker
-5. Set up a monthly direct debit and automatic investment in your ISA
+5. Set up a monthly direct debit and automatic investment in your ISA. Start with small amounts if you don't feel comfortable at first.
 6. Keep track of your finances and increase ISA/Pension contributions over time
 
 ---
@@ -435,6 +513,8 @@ But, don't wait to become an expert. Best way to learn is by doing.
 --
 
 [r/UKPersonalFinance](https://www.reddit.com/r/UKPersonalFinance/)
+
+Check out the [clickable flowchart](https://ukpersonal.finance/flowchart/)
 
 --
 
