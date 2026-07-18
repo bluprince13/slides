@@ -1,13 +1,11 @@
-<a href="https://revealjs.com">
-        <img
-        src="assets/banner.jpeg"
-        alt="reveal.js logo"
-            style="
-            height: 180px;
-            margin: 0 auto 4rem auto;
-            background: transparent;"
-        />
-</a>
+<img
+    src="assets/banner.jpeg"
+    alt="Banner"
+    style="
+    height: 180px;
+    margin: 0 auto 4rem auto;
+    background: transparent;"
+/>
 
 ### Introduction to investing
 
@@ -21,6 +19,8 @@ My partner wanted me to give her an introduction to the stock market that was
 simple, immediately useful and most of all, not boring.
 
 ---
+
+<!-- .slide: style="font-size:0.85em" -->
 
 ## Agenda
 
@@ -196,7 +196,7 @@ Note:
 
 ![](assets/compound-interest.png) <!-- .element: width="80%" -->
 
-Investing just $1000 a month could allow you become a millionaire within 40
+Investing just $1000 a month could allow you to become a millionaire within 40
 years.
 [[Compound Interest Calculator](https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator)]
 
@@ -294,7 +294,7 @@ The fluctuations don't matter as much if you are investing for a long time.
 
 --
 
-![](assets/marginal-tax-rate.png) <!-- .element: width="100%" -->
+![](assets/marginal-tax-rate.png) <!-- .element: width="70%" -->
 
 [Interactive marginal tax rate chart – June 2024](https://taxpolicy.org.uk/2024/03/10/infographic_marginal_rates_2024/)
 
@@ -307,14 +307,15 @@ Components: [Income tax](https://www.gov.uk/income-tax-rates), [National Insuran
 - Personal Allowance - Up to £12,570
 - Basic rate 20% - £12,571 to £50,270
 - Higher rate 40% - £50,271 to £125,140
+- Additional rate 45% - over £125,140
 
 --
 
 ## Tax on dividends
 
-- Tax-free allowance: Above £500
-- Basic rate band: 8.75%
-- Higher rate band: 33.75%
+- Tax-free allowance: £500 (tax applies above this)
+- Basic rate band: 10.75%
+- Higher rate band: 35.75%
 - See [[Tax on dividends - gov.uk](https://www.gov.uk/tax-on-dividends)]
 
 --
@@ -322,15 +323,15 @@ Components: [Income tax](https://www.gov.uk/income-tax-rates), [National Insuran
 ## Capital Gains Tax (CGT)
 
 - Tax-free allowance: £3000
-- 10% on gains within basic rate band
-- 20% on gains above basic rate band
+- 18% on gains within basic rate band
+- 24% on gains above basic rate band
 - See [[Capital Gains Tax allowances - gov.uk](https://www.gov.uk/capital-gains-tax)]
 
 --
 
 ## How can we minimise the tax we owe?
 
-- Government incentivises us to to save by offering tax benefits
+- Government incentivises us to save by offering tax benefits
 - We just need to make use of these `tax wrappers`
 
 ---
@@ -385,14 +386,14 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 - No CGT
 - No tax on dividends
 - Income tax only paid at time of withdrawal
-  - [25% tax free allowance](https://www.gov.uk/tax-on-pension/tax-free)
+  - [25% tax free allowance](https://www.gov.uk/tax-on-pension/tax-free) (capped at £268,275)
   - Rest is hopefully paid at lower income tax rates than marginal tax rate when you were earning
 
 --
 
 ## Pension annual allowance
 
-£60,000
+£60,000 (incl. employer contributions)
 
 [Tax on your private pension contributions - gov.uk](https://www.gov.uk/tax-on-your-private-pension/annual-allowance)
 
@@ -400,7 +401,7 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 
 --
 
-## Pension withrdrawal age
+## Pension withdrawal age
 
 55 (rising to 57 from 2028)
 
@@ -414,6 +415,7 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 
 - No CGT
 - No tax on dividends
+- Withdraw anytime, tax free
 
 --
 
@@ -438,9 +440,11 @@ AJBell](https://www.ajbell.co.uk/pensions-and-retirement/accessing-your-pension/
 
 - ISA
   - £20,000 per year
+  - Withdraw anytime
   - Pre-retirement needs
 - Pension
   - £60,000 per year
+  - Locked until 55 (57 from 2028)
   - Post-retirement needs
 
 --
@@ -462,10 +466,10 @@ Monevator](https://monevator.com/compare-uk-cheapest-online-brokers/)
 
 - Start with a percentage-fee broker
   - [Charles Stanley Direct](https://www.charles-stanley.co.uk/about-us/important-information/investment-management-services/direct-charges)
-  - 0.35%/year
+  - 0.30%/year
 - Otherwise, use a flat-fee broker
   - [Interactive Investor](https://www.ii.co.uk/our-charges)
-  - £11.99/month
+  - £5.99/month, £14.99/month (plus)
 
 --
 
@@ -501,7 +505,7 @@ But, don't wait to become an expert. Best way to learn is by doing.
 - [MoneySavingExpert](https://www.moneysavingexpert.com/)
   - [Weekly email](https://www.moneysavingexpert.com/latesttip/)
   - [Martin Lewis Podcast](https://www.moneysavingexpert.com/site/listen-to--the-martin-lewis-podcast-/)
--[MeaningfulMoney](meaningfulmoney.tv)
+- [MeaningfulMoney](https://meaningfulmoney.tv)
   - [YouTube](https://www.youtube.com/@MeaningfulMoney/videos)
   - [Podcast](https://meaningfulmoney.tv/mmpodcast/)
     - [S18 – Ultimate Guides](https://meaningfulmoney.tv/season-18-ultimate-guides/)
