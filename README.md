@@ -10,3 +10,5 @@ This is a repo to keep all my slides made using
 3. Edit the index.html as you need.
 4. Serve locally using
    [live server](https://github.com/ritwickdey/vscode-live-server).
+5. After adding or editing a deck, regenerate the manifest and commit it:
+   `node scripts/build-manifest.mjs`

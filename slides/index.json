@@ -1,0 +1,52 @@
+{
+    "decks": [
+        {
+            "slug": "intro-to-stock-market",
+            "title": "Intro to the stock market",
+            "description": "Why invest in the stock market and how to get started — compounding, volatility, and getting rich slowly.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/intro-to-stock-market/assets/banner.jpeg",
+            "date": "2026-07-18"
+        },
+        {
+            "slug": "aws-verified-permissions",
+            "title": "Introduction to AWS Verified Permissions",
+            "description": "Fine-grained authorization with AWS Verified Permissions and the Cedar policy language — role- and attribute-based access control as a managed service.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/aws-verified-permissions/assets/logo.jpg",
+            "date": "2025-03-21"
+        },
+        {
+            "slug": "introduction-to-https-and-cert-management",
+            "title": "Introduction to HTTPS and certificate management",
+            "description": "How HTTPS and TLS certificates work under the hood, and how Amazon Certificate Manager takes the pain out of managing them.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/introduction-to-https-and-cert-management/images/logo.jpg",
+            "date": "2023-02-24"
+        },
+        {
+            "slug": "aws-cognito",
+            "title": "An introduction to AWS Cognito",
+            "description": "How to authenticate users and authorise API access with AWS Cognito — user pools, groups, custom lambda authorisers, OAuth scopes and identity federation.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/aws-cognito/assets/cognito-icon.jpeg",
+            "date": "2022-09-05"
+        },
+        {
+            "slug": "intro-to-nextjs",
+            "title": "Introduction to Next.js",
+            "description": "What Next.js adds on top of React — page-based routing, pre-rendering with SSG and SSR, API routes and easy deployment.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/intro-to-nextjs/images/nextjs-logo.png",
+            "date": "2021-06-18"
+        },
+        {
+            "slug": "js-behind-the-scenes",
+            "title": "JS - behind the scenes",
+            "description": "How JavaScript works behind the scenes — the JS engine, first-class functions, closures, and asynchronous code with promises.",
+            "author": "Vipin Ajayakumar",
+            "banner": "/slides/js-behind-the-scenes/images/function.png",
+            "date": "2021-02-11"
+        }
+    ]
+}
